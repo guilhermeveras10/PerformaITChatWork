@@ -1,0 +1,6 @@
+framework module Pods_PerformChat {
+  umbrella header "Pods-PerformChat-umbrella.h"
+
+  export *
+  module * { export * }
+}

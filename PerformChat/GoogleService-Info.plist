@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1090471427775-7fn2v407sfotikkf2cbgflt9ede2509t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1090471427775-7fn2v407sfotikkf2cbgflt9ede2509t</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBGXO7-NwJmcXzKkEFl4K9QM71Y4f5sszw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1090471427775</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.guilherme.PerformChat</string>
+	<key>PROJECT_ID</key>
+	<string>performaitchat</string>
+	<key>STORAGE_BUCKET</key>
+	<string>performaitchat.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1090471427775:ios:3451e12a69843f9856500a</string>
+	<key>DATABASE_URL</key>
+	<string>https://performaitchat.firebaseio.com</string>
+</dict>
+</plist>
