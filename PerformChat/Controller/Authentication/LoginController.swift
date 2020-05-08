@@ -51,7 +51,7 @@ class LoginController: UIViewController {
         return CustomTextField(placeholder: "Email")
     }()
     
-    private let pwdTextField: UITextField = {
+    private let pwdTextField: CustomTextField = {
         let txt = CustomTextField(placeholder: "Senha")
         txt.isSecureTextEntry = true
         return txt 
@@ -66,6 +66,9 @@ class LoginController: UIViewController {
         return btn
     }()
     
+    var textFields: [CustomTextField] {
+        return [emailTextField,pwdTextField]
+    }
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -135,9 +138,7 @@ class LoginController: UIViewController {
     
     
     func configureTextViewDelegates() {
-        
-        self.emailTextField.delegate = self
-        self.pwdTextField.delegate = self
+        textFields.forEach { $0.delegate = self }
     }
 }
 
@@ -160,8 +161,12 @@ extension LoginController: AutheticationControllerProtocol {
 
 extension LoginController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if let selectedTextFieldIndex = textFields.firstIndex(of: textField as! CustomTextField), selectedTextFieldIndex < textFields.count - 1 {
+            textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
 }

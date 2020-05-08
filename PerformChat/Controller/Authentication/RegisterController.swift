@@ -86,13 +86,18 @@ class RegisterController: UIViewController {
         return txt
     }()
     
-    private let pwdTextField: UITextField = {
+    private let pwdTextField: CustomTextField = {
         let txt = CustomTextField(placeholder: "Senha")
         txt.isSecureTextEntry = true
         txt.textContentType = .password
         txt.keyboardType = .emailAddress
         return txt
     }()
+    
+    var textFields: [CustomTextField] {
+        return [emailTextField, fullNmeTextField, usernameTextField, pwdTextField]
+        
+    }
     
     //MARK: - Lifecycle
     
@@ -107,11 +112,13 @@ class RegisterController: UIViewController {
     //MARK: - Selectors
     
     @objc func signUpTouch() {
+        if emailTextField.text == "" || pwdTextField.text == "" || fullNmeTextField.text == "" || usernameTextField.text == "" || profileImage == nil {self.showError("Verifique os campos")}
+
         guard let email = emailTextField.text else { return }
         guard let pwd = pwdTextField.text else { return }
         guard let username = usernameTextField.text?.lowercased() else { return }
         guard let fullname = fullNmeTextField.text else { return }
-        guard let profileImage = profileImage else { return  }
+        guard let profileImage = profileImage else { return }
         
         let credentials = RegistrationCredential(email: email, pwd: pwd, fullname: fullname, username: username, profileImage: profileImage)
         
@@ -208,11 +215,7 @@ class RegisterController: UIViewController {
     }
     
     func configureTextViewDelegates() {
-        
-        self.emailTextField.delegate = self
-        self.pwdTextField.delegate = self
-        self.fullNmeTextField.delegate = self
-        self.usernameTextField.delegate = self
+        textFields.forEach { $0.delegate = self }
     }
     
 }
@@ -254,8 +257,12 @@ extension RegisterController: AutheticationControllerProtocol {
 
 extension RegisterController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if let selectedTextFieldIndex = textFields.firstIndex(of: textField as! CustomTextField), selectedTextFieldIndex < textFields.count - 1 {
+            textFields[selectedTextFieldIndex + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
 }
