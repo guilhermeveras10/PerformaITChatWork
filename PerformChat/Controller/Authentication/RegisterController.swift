@@ -75,14 +75,14 @@ class RegisterController: UIViewController {
     private let fullNmeTextField: CustomTextField = {
         let txt = CustomTextField(placeholder: "Nome Completo")
         txt.textContentType = .name
-        txt.keyboardType = .emailAddress
+        txt.keyboardType = .default
         return txt
     }()
     
     private let usernameTextField: CustomTextField = {
         let txt = CustomTextField(placeholder: "Apelido")
         txt.textContentType = .username
-        txt.keyboardType = .emailAddress
+        txt.keyboardType = .default
         return txt
     }()
     
@@ -90,7 +90,7 @@ class RegisterController: UIViewController {
         let txt = CustomTextField(placeholder: "Senha")
         txt.isSecureTextEntry = true
         txt.textContentType = .password
-        txt.keyboardType = .emailAddress
+        txt.keyboardType = .default
         return txt
     }()
     
